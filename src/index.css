@@ -1,0 +1,207 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg-primary: #171512;
+  --color-bg-secondary: #211E19;
+  --color-bg-card: #1D1A16;
+  --color-bg-subtle: #26231D;
+  --color-cream: #F1E9DA;
+  --color-beige: #B9AC98;
+  --color-accent: #9B6B43;
+  --color-accent-hover: #B57F52;
+  --color-muted: #8F877B;
+  --color-paper: #FAF8F3;
+  
+  --font-serif: "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Playfair Display", "Cormorant Garamond", Georgia, serif;
+}
+
+:root {
+  --color-bg: #171512;
+  --color-surface: #211E19;
+  --color-surface-hover: #2B2721;
+  --color-text: #FAF8F3;
+  --color-cream: #F1E9DA;
+  --color-muted: #8F877B;
+  --color-beige: #B9AC98;
+  --color-accent: #9B6B43;
+  --color-border: rgba(241, 233, 218, 0.08);
+  --color-border-hover: rgba(241, 233, 218, 0.18);
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+  --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Hide default browser scrollbars cleanly across all platforms */
+html, body {
+  background-color: #171512;
+  color: #FAF8F3;
+  font-family: var(--font-sans);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+/* Chrome, Safari and Opera scrollbar removal */
+::-webkit-scrollbar {
+  display: none !important;
+  width: 0px !important;
+  height: 0px !important;
+}
+
+/* Universal utility to completely hide scrollbars on scrollable containers */
+.no-scrollbar::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+}
+
+/* Editorial typography */
+.font-serif {
+  font-family: "Cormorant Garamond", "Playfair Display", Georgia, serif;
+}
+
+.font-sans {
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.font-display {
+  font-family: "Playfair Display", "Cormorant Garamond", Georgia, serif;
+}
+
+/* Keyframes & Animations */
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slowAmbientZoom {
+  0% {
+    transform: scale(1.02);
+  }
+  50% {
+    transform: scale(1.06);
+  }
+  100% {
+    transform: scale(1.02);
+  }
+}
+
+@keyframes shimmerGlow {
+  0%, 100% {
+    border-color: rgba(155, 107, 67, 0.4);
+    box-shadow: 0 0 12px rgba(155, 107, 67, 0.08);
+  }
+  50% {
+    border-color: rgba(155, 107, 67, 0.85);
+    box-shadow: 0 0 20px rgba(155, 107, 67, 0.22);
+  }
+}
+
+.animate-fade-slide-up {
+  animation: fadeSlideUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.animate-fade-scale {
+  animation: fadeInScale 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.animate-ambient-zoom {
+  animation: slowAmbientZoom 24s ease-in-out infinite;
+}
+
+.animate-shimmer-glow {
+  animation: shimmerGlow 3.5s ease-in-out infinite;
+}
+
+/* Stagger item delays */
+.delay-1 { animation-delay: 60ms; }
+.delay-2 { animation-delay: 120ms; }
+.delay-3 { animation-delay: 180ms; }
+.delay-4 { animation-delay: 240ms; }
+.delay-5 { animation-delay: 300ms; }
+.delay-6 { animation-delay: 360ms; }
+
+/* Subtle image zoom on hover with editorial restraint */
+.editorial-img-wrap {
+  overflow: hidden;
+}
+
+.editorial-img-wrap img {
+  transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1), filter 0.6s ease;
+}
+
+.editorial-img-wrap:hover img {
+  transform: scale(1.04);
+}
+
+/* Elegant hairline dividers */
+.hairline-b {
+  border-bottom: 1px solid rgba(241, 233, 218, 0.08);
+}
+
+.hairline-t {
+  border-top: 1px solid rgba(241, 233, 218, 0.08);
+}
+
+.hairline-all {
+  border: 1px solid rgba(241, 233, 218, 0.08);
+}
+
+/* Tab active indicator styling with warm amber accent glow */
+.tab-btn-active {
+  position: relative;
+  background-color: #242019;
+  color: #F1E9DA;
+  border: 1px solid #9B6B43;
+  box-shadow: 0 4px 18px rgba(155, 107, 67, 0.15);
+}
+
+.tab-btn-active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 20%;
+  right: 20%;
+  height: 2px;
+  background: #FAF8F3;
+  box-shadow: 0 0 8px rgba(250, 248, 243, 0.6);
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
